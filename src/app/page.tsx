@@ -1,8 +1,13 @@
-import Link from 'next/link';
+'use client';
+
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Clapperboard } from 'lucide-react';
+import { TikTokAuthDialog } from '@/components/tiktok-auth-dialog';
 
 export default function WelcomePage() {
+  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
@@ -22,12 +27,11 @@ export default function WelcomePage() {
             Votre assistant IA pour percer sur TikTok. Analysez les tendances, générez des idées de contenu et optimisez vos hashtags pour devenir viral.
           </p>
         </div>
-        <Link href="/home">
-          <Button size="lg" className="text-lg">
-            Commencer
-          </Button>
-        </Link>
+        <Button size="lg" className="text-lg" onClick={() => setIsAuthDialogOpen(true)}>
+          Commencer
+        </Button>
       </main>
+      <TikTokAuthDialog open={isAuthDialogOpen} onOpenChange={setIsAuthDialogOpen} />
     </div>
   );
 }
