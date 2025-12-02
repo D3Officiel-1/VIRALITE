@@ -2,11 +2,16 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Clapperboard } from 'lucide-react';
-import { TikTokAuthDialog } from '@/components/tiktok-auth-dialog';
+import { Clapperboard, Loader2 } from 'lucide-react';
 
 export default function WelcomePage() {
-  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
+
+  const handleConnect = () => {
+    setIsConnecting(true);
+    // Redirect to our server-side auth route
+    window.location.href = '/api/tiktok/auth';
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -27,11 +32,17 @@ export default function WelcomePage() {
             Votre assistant IA pour percer sur TikTok. Analysez les tendances, générez des idées de contenu et optimisez vos hashtags pour devenir viral.
           </p>
         </div>
-        <Button size="lg" className="text-lg" onClick={() => setIsAuthDialogOpen(true)}>
-          Commencer
+        <Button size="lg" className="text-lg" onClick={handleConnect} disabled={isConnecting}>
+          {isConnecting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Connexion...
+            </>
+          ) : (
+            'Commencer'
+          )}
         </Button>
       </main>
-      <TikTokAuthDialog open={isAuthDialogOpen} onOpenChange={setIsAuthDialogOpen} />
     </div>
   );
 }
