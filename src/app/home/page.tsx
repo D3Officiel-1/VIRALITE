@@ -8,7 +8,7 @@ export default function HomePage() {
         <div className="flex items-center gap-2">
           <Clapperboard className="h-6 w-6 text-primary" />
           <h1 className="text-xl font-bold tracking-tight font-headline">
-            TikTok Viral Visionnaire
+            Viralité+
           </h1>
         </div>
       </header>

@@ -3,7 +3,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TikTok Viral Visionnaire',
+  title: 'Viralité+',
   description: 'Votre assistant IA pour percer sur TikTok',
 };
 
