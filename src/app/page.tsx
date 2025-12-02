@@ -1,9 +1,10 @@
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import { Clapperboard } from 'lucide-react';
-import { Dashboard } from '@/components/dashboard';
 
-export default function Home() {
+export default function WelcomePage() {
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
+    <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
         <div className="flex items-center gap-2">
           <Clapperboard className="h-6 w-6 text-primary" />
@@ -12,8 +13,20 @@ export default function Home() {
           </h1>
         </div>
       </header>
-      <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-        <Dashboard />
+      <main className="flex flex-1 flex-col items-center justify-center gap-8 p-4 text-center">
+        <div className="space-y-4">
+          <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
+            Bienvenue sur <span style={{color: 'hsl(var(--primary))'}}>TikTok Viral Visionnaire</span>
+          </h2>
+          <p className="max-w-[700px] text-lg text-muted-foreground md:text-xl">
+            Votre assistant IA pour percer sur TikTok. Analysez les tendances, générez des idées de contenu et optimisez vos hashtags pour devenir viral.
+          </p>
+        </div>
+        <Link href="/home">
+          <Button size="lg" className="text-lg">
+            Commencer
+          </Button>
+        </Link>
       </main>
     </div>
   );
